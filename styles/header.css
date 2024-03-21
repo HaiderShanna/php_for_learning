@@ -1,0 +1,81 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    background-color: rgb(48, 47, 47);
+}
+.logo i{
+    color: white !important;
+}
+.header{
+    background-color: #18191A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0px 30px;
+    min-height: 10vh;
+}
+.header p{
+    display: inline-block;
+    color: white;
+}
+.left-side{
+    display: flex;
+    align-items: center;
+}
+.left-side .insta-logo{
+    font-size: 50px;
+    color: white;
+    margin-right: 20px;
+}
+.left-side p{
+    font-size: 25px
+}
+
+.mid-side .add-post{
+    padding: 15px 20px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.15s;
+    margin-left: 100px;
+}
+.mid-side .add-post:hover{
+    opacity: 0.8;
+    background-color: rgb(21, 21, 21);
+}
+
+.right-side .link{
+    font-size: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    transition: 0.15s;
+}
+.right-side .link:hover{
+    opacity: 0.8;
+    border-bottom: 2px solid white;
+    padding-bottom: 3px;
+}
+.right-side .log-out{
+    padding: 15px 15px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.15s;
+}
+.right-side .log-out:hover{
+    opacity: 0.8;
+    background-color: rgb(21, 21, 21);
+}

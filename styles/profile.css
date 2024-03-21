@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+.user-info{
+    display: flex;
+    padding: 3% 20px;
+    align-items: center;
+}
+.user-info .left-side{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+.user-info .left-side img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 25px;
+    object-fit: cover;
+}
+.user-info .left-side .file{
+    display: none;
+}
+.user-info .left-side .file-label{
+    padding: 15px 15px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+.user-info .left-side .file-label:hover{
+    opacity: 0.8;
+    background-color: rgb(21, 21, 21);
+}
+.left-side .error{
+    color: red;
+    margin-top: 20px;
+    font-size: 12px;
+}
+.right-side .username{
+    color: white;
+    font-size: 30px;
+    position: relative;
+    top: -20px;
+    left: -30px;
+}
+
+/* -----------Posts Design--------------- */
+
+.single-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    margin-top: 20px;
+}
+.single-post .post-head{
+    width: 100%;
+    background-color: rgb(14, 13, 13);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    padding: 15px 10px;
+}
+.single-post .post-head .post-profile-picture{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.single-post .post-head .post-username{
+    color: white;
+    font-size: 20px;
+}
+.single-post .post{
+    width: 100%;
+    max-height: 700px;
+    object-fit: cover;
+}
+.single-post .post-bottom-div{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+}
+.single-post .post-bottom-div .post-caption{
+    flex-basis: 70%;
+}
+.flex-div{
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}

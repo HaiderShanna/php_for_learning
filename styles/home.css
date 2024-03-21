@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* --------Add New Post Design-------- */
+
+.post-page{
+    display: flex;
+    justify-content: center;
+    min-height: 90vh;
+    position: absolute;
+    width: 100%;
+}
+.closed{
+    display: none;
+}
+.post-form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: #18191A;
+    width: 40%;
+    height: 50%;
+    padding: 30px 0px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+.post-form label{
+    display: block;
+    color: white;
+}
+.post-form .post-image{
+    display: none;
+}
+.post-form .post-image-label{
+    padding: 15px 35px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.15s;
+    text-align: center;
+}
+.post-form .image-div{
+    width: 50%;
+}
+.post-form .post-image-label:hover{
+    opacity: 0.8;
+    background-color: rgb(21, 21, 21);
+}
+.post-form .post-caption{
+    width: 100%;
+}
+.post-form .caption-div{
+    width: 50%;
+}
+.post-form .post{
+    padding: 10px 25px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.15s;
+    text-align: center;
+}
+.post-form .error{
+    color: rgb(187, 24, 24);
+}
+
+/* -----------Posts Design--------------- */
+
+.single-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
+    margin-top: 20px;
+}
+.single-post .post-head{
+    width: 100%;
+    background-color: rgb(14, 13, 13);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    padding: 15px 10px;
+}
+.single-post .post-head .post-profile-picture{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.single-post .post-head .post-username{
+    color: white;
+    font-size: 20px;
+}
+.single-post .post{
+    width: 100%;
+    max-height: 700px;
+    object-fit: cover;
+}
+.single-post .post-bottom-div{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+}
+.single-post .post-bottom-div .post-caption{
+    flex-basis: 70%;
+}
+.flex-div{
+    display: flex;
+    align-items: center;
+}
