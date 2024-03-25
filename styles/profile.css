@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -63,9 +65,39 @@
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     display: flex;
-    column-gap: 15px;
+    justify-content: space-between;
     align-items: center;
     padding: 15px 10px;
+}
+.single-post .post-head .left-side{
+    display: flex;
+    column-gap: 15px;
+}
+.single-post .post-head .right-side{
+    position: relative;
+}
+.single-post .post-head .right-side .three-dots{
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+.single-post .post-head .right-side .delete-button{
+    color: red;
+    background-color: #18191A;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 15px;
+    position: absolute;
+    top: -10px;
+    left: -100px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.single-post .post-head .right-side .delete-button:hover{
+    background-color: #28292b;
+}
+.single-post .post-head .right-side .closed{
+    display: none;
 }
 .single-post .post-head .post-profile-picture{
     width: 65px;

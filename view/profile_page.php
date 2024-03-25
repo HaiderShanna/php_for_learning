@@ -20,6 +20,10 @@ $username = $_SESSION['username'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/profile.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>My Profile</title>
 </head>
 <body>
@@ -62,6 +66,44 @@ $username = $_SESSION['username'];
         x.onchange = function () {
             document.querySelector(".myform").submit();
         }
+
+        /* Delete Post Button */
+        let three_dots_elem = document.querySelectorAll(".three-dots");
+        let delete_button = document.querySelectorAll(".delete-button");
+        let posts_elem = document.querySelectorAll(".post");
+        let src_elem = document.querySelectorAll(".post-src");
+        let delete_form = document.querySelectorAll(".delete-post-form");
+
+
+
+        three_dots_elem.forEach((element, i) => {
+            element.addEventListener('click', () => {
+                delete_button[i].classList.toggle("closed");
+            })
+        })
+        
+        delete_button.forEach((element, i) => {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                let post_src = posts_elem[i].src;
+                src_elem[i].value = post_src;
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Delete!"
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        delete_form[i].submit();
+                    }
+                });
+            })
+        })
+        /***************************/
     </script>
 </body>
 </html>

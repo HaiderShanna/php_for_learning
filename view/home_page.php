@@ -65,6 +65,24 @@ else{
             </a>
         </div>
     </div> 
+
+    <ul class="friends-list">
+        <li>
+            <div>
+                <img src="../imgs/profile_pictures/aliimg_2478.jpg" alt="test">
+                <p>username</p>
+            </div>
+            <button>Follow</button>
+        </li>
+        <li>
+            <div>
+                <img src="" alt="test">
+                <p>username</p>
+            </div>
+            <button>Follow</button>
+        </li>
+    </ul>
+
     <div class="<?php check_error() ?>">
         <form action="../includes/post_check.php" class="post-form" enctype="multipart/form-data" method="post">
             <div class="image-div">

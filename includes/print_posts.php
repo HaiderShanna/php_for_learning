@@ -45,8 +45,17 @@ function print_my_posts(){
         echo 
         "<div class='single-post'>
             <div class='post-head'>
-                <img src='../imgs/profile_pictures/$profile_picture' alt='profile picture' class='post-profile-picture'>
-                <p class='post-username'>$name</p>
+                <div class='left-side'>
+                    <img src='../imgs/profile_pictures/$profile_picture' alt='profile picture' class='post-profile-picture'>
+                    <p class='post-username'>$name</p>
+                </div>
+                <div class='right-side'>
+                    <form action='../includes/delete_post.php' method='post' class='delete-post-form'>
+                        <button class='delete-button closed' name='delete-button'>Delete Post</button>
+                        <input type='hidden' class='post-src' name='post_src' value=''>
+                    </form>
+                    <i class='bi bi-three-dots-vertical three-dots'></i>
+                </div>
             </div>
             <img src='../imgs/posts/$post' alt='post image' class='post'>
             <div class='post-bottom-div'>

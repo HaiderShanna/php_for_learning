@@ -220,6 +220,10 @@ class database extends dbh{
         $stmt->execute();
         return $stmt->fetchAll(pdo::FETCH_ASSOC);
     }
+    public function delete_post($post_name) {
+        $query = "DELETE FROM posts WHERE post = '$post_name'";
+        $this->pdo->query($query);
+    }
 
 
 }
