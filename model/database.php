@@ -3,7 +3,7 @@ class database extends dbh{
     private $pdo;
     public function __construct()
     {
-        $dbh = new dbh("", "", "", "");
+        $dbh = new dbh();
         $this->pdo = $dbh->connect();
     }
     protected function set_user($email, $username, $password){
@@ -223,6 +223,18 @@ class database extends dbh{
     public function delete_post($post_name) {
         $query = "DELETE FROM posts WHERE post = '$post_name'";
         $this->pdo->query($query);
+    }
+    public function get_friends_list($limit, $id){
+        $query2 = "SELECT name, profile_picture FROM users
+        WHERE id NOT IN (
+            SELECT friend FROM friends
+            WHERE user = $id
+            ) AND id != $id  
+        LIMIT $limit;";
+
+
+        $result = $this->pdo->query($query2);
+        return $result->fetchAll(pdo::FETCH_ASSOC);
     }
 
 

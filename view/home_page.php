@@ -3,6 +3,8 @@ include '../includes/dbh.php';
 include '../model/database.php';
 require ("../includes/session_security.php");
 include ("../includes/print_posts.php");
+require_once '../includes/print_friends_list.php';
+
 if (isset($_SESSION['logged_in'])) {
     $username = $_SESSION['username'];
 
@@ -45,6 +47,9 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/home.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <title>home</title>
 </head>
 <body>
@@ -67,20 +72,10 @@ else{
     </div> 
 
     <ul class="friends-list">
-        <li>
-            <div>
-                <img src="../imgs/profile_pictures/aliimg_2478.jpg" alt="test">
-                <p>username</p>
-            </div>
-            <button>Follow</button>
-        </li>
-        <li>
-            <div>
-                <img src="" alt="test">
-                <p>username</p>
-            </div>
-            <button>Follow</button>
-        </li>
+        <div class="friends-list-div">
+            <?php print_friends_list(5); // 5 is the limit of users ?>
+        </div>
+        <button class="show-more-button">Show more</button>
     </ul>
 
     <div class="<?php check_error() ?>">
@@ -106,6 +101,17 @@ else{
         let postDiv = document.querySelector(".post-page");
         postButton.addEventListener('click', ()=>{
             postDiv.classList.toggle('closed');
+        })
+
+        /*Show more friends button*/
+        $(document).ready(function(){
+            let limit_count = 5;
+            $(".show-more-button").click(function(){
+                limit_count += 5;
+                $(".friends-list-div").load("../includes/show_more_friends.php", {
+                    limit_count: limit_count
+                })
+            })
         })
     </script>  
 </body>

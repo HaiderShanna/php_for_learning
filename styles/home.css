@@ -150,6 +150,7 @@ body{
     background-color: #18191A;
     padding: 10px;
     border-radius: 10px;
+    margin-top: 10px;
 }
 .friends-list li div{
     display: flex;
@@ -179,6 +180,21 @@ body{
     transition: 0.15s;
 }
 .friends-list li button:hover{
+    opacity: 0.8;
+    background-color: rgb(21, 21, 21);
+}
+.show-more-button{
+    margin-right: 15px;
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+.show-more-button:hover{
     opacity: 0.8;
     background-color: rgb(21, 21, 21);
 }
