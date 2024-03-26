@@ -8,6 +8,7 @@ if(!isset($_SESSION['logged_in'])){
     header("location: ../index.php");
     die();
 }
+
 $db = new database;
 $profile_picture = $db->get_profile_picture($_SESSION['email']);
 $username = $_SESSION['username'];
@@ -61,6 +62,24 @@ $username = $_SESSION['username'];
     <div class="flex-div">
         <?php print_my_posts(); ?> 
     </div>
+
+    <?php 
+    if(isset($_GET['success'])){
+        ?>
+        <script>
+            $(document).ready(function(){
+                Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Post Deleted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+                });
+            })
+        </script> 
+        <?php
+        }
+    ?>
     <script>
         let x = document.querySelector(".file");
         x.onchange = function () {
