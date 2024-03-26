@@ -3,7 +3,7 @@ class database extends dbh{
     private $pdo;
     public function __construct()
     {
-        $dbh = new dbh("localhost", "root", "", "firstdb");
+        $dbh = new dbh("", "", "", "");
         $this->pdo = $dbh->connect();
     }
     protected function set_user($email, $username, $password){
