@@ -198,3 +198,9 @@ body{
     opacity: 0.8;
     background-color: rgb(21, 21, 21);
 }
+.followed{
+    background-color: white !important;
+    color: black !important;
+    font-weight: bold !important;
+    padding: 5px 20px !important;
+}

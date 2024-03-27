@@ -236,7 +236,12 @@ class database extends dbh{
         $result = $this->pdo->query($query2);
         return $result->fetchAll(pdo::FETCH_ASSOC);
     }
+    public function add_friend($user, $friend){
+        $query = "INSERT INTO friends(user, friend)
+                VALUES('$user', '$friend')";
 
+        $this->pdo->query($query);
+    }
 
 }
 

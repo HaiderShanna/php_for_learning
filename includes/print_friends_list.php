@@ -17,9 +17,9 @@ function print_friends_list($limit){
         <li>
             <div>
                 <img src='../imgs/profile_pictures/$profile_picture' alt='test'>
-                <p>$name</p>
+                <p class='friend-name'>$name</p>
             </div>
-            <button>Follow</button>
+            <button class='follow-button' data-name=$name>Follow</button>
         </li>
         ";
     }   
