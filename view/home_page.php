@@ -95,7 +95,9 @@ if (isset($_SESSION['logged_in'])) {
             <?php error_p() ?>
         </form>
     </div>
-    <?php printPosts() ?>
+    <div class="all-posts">
+        <?php printPosts() ?>
+    </div>
 
     <script>
         let postButton = document.querySelector(".add-post");
@@ -105,12 +107,19 @@ if (isset($_SESSION['logged_in'])) {
         })
 
         /*Show more friends button*/
+        let show_more = document.querySelector(".show-more-button");
+
         $(document).ready(function() {
             let limit_count = 5;
             $(".show-more-button").click(function() {
                 limit_count += 5;
-                $(".friends-list-div").load("../includes/show_more_friends.php", {
+                $.post("../includes/show_more_friends.php", {
                     limit_count: limit_count
+                }, function(data, status){
+                    if(data.includes("<p hidden>")){
+                        show_more.remove();
+                    }
+                    $(".friends-list-div").html(data);
                 })
             })
         })
@@ -135,6 +144,7 @@ if (isset($_SESSION['logged_in'])) {
                             });
                             element.classList.add("followed");
                             element.innerHTML = "followed";
+                            $(".all-posts").load("../includes/ajax_print_posts.php");
                         })
                 }
             });

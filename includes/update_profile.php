@@ -20,7 +20,7 @@ if(in_array($EXT, $allowedEXT)){
     move_uploaded_file($tmp_name, "../imgs/profile_pictures/$filename");
     $db = new database;
     $db->update_profile_picture($username, $filename);
-    header("location: ../view/profile_page.php?success");
+    header("location: ../view/profile_page.php");
     die();
 }
 else{

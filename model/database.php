@@ -3,7 +3,7 @@ class database extends dbh{
     private $pdo;
     public function __construct()
     {
-        $dbh = new dbh();
+        $dbh = new dbh("localhost", "root", "", "firstdb");
         $this->pdo = $dbh->connect();
     }
     protected function set_user($email, $username, $password){
@@ -193,6 +193,18 @@ class database extends dbh{
     public function get_all_posts(){
         $query = "SELECT users.name, users.profile_picture, post, caption, date FROM posts
         JOIN users ON posts.user_id = users.id
+        ORDER BY date DESC;";
+
+        $result = $this->pdo->query($query);
+        return $result->fetchAll(pdo::FETCH_ASSOC);
+    }
+    public function get_friends_posts($id){
+        $query = "SELECT users.name, users.profile_picture, post, caption, date FROM posts
+        JOIN users ON posts.user_id = users.id
+        WHERE user_id IN(
+            SELECT friend FROM friends
+            WHERE user = $id
+        ) OR user_id = $id
         ORDER BY date DESC;";
 
         $result = $this->pdo->query($query);
