@@ -198,14 +198,15 @@ class database extends dbh{
         $result = $this->pdo->query($query);
         return $result->fetchAll(pdo::FETCH_ASSOC);
     }
-    public function get_friends_posts($id){
+    public function get_friends_posts($id, $limit){
         $query = "SELECT users.name, users.profile_picture, post, caption, date FROM posts
         JOIN users ON posts.user_id = users.id
         WHERE user_id IN(
             SELECT friend FROM friends
             WHERE user = $id
         ) OR user_id = $id
-        ORDER BY date DESC;";
+        ORDER BY date DESC
+        LIMIT $limit;";
 
         $result = $this->pdo->query($query);
         return $result->fetchAll(pdo::FETCH_ASSOC);

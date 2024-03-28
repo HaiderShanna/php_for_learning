@@ -96,7 +96,7 @@ if (isset($_SESSION['logged_in'])) {
         </form>
     </div>
     <div class="all-posts">
-        <?php printPosts() ?>
+        <?php printPosts(5) ?>
     </div>
 
     <script>
@@ -123,6 +123,17 @@ if (isset($_SESSION['logged_in'])) {
                 })
             })
         })
+
+        /* Show more Posts button */
+        let show_more_posts = document.querySelector(".show-more-posts");
+
+        $(document).ready(function(){
+            let limit = 5;
+            $(document).on('click', '.show-more-posts', function(){
+                $(".all-posts").load("../includes/ajax_print_posts.php", {limit: limit +=5});
+            })
+        })
+
 
         /* Follow Button */
         $(document).ready(function() {

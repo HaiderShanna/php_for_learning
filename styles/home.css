@@ -128,6 +128,23 @@ body{
     display: flex;
     align-items: center;
 }
+.show-more-posts{
+    display: block;
+    margin: auto;
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.15s;
+    margin-top: 25px;
+}
+.show-more-posts:hover{
+    opacity: 0.8;
+    background-color: rgb(21, 21, 21);
+}
 
 /* Following List */
 
