@@ -255,7 +255,50 @@ class database extends dbh{
 
         $this->pdo->query($query);
     }
-
+    public function get_followers_number($id){
+        $query = "SELECT * FROM friends WHERE friend = $id";
+        $result = $this->pdo->query($query);
+        $result = $result->fetchAll(pdo::FETCH_ASSOC);
+        return count($result);
+    }
+    public function get_following_number($id){
+        $query = "SELECT * FROM friends WHERE user = $id";
+        $result = $this->pdo->query($query);
+        $result = $result->fetchAll(pdo::FETCH_ASSOC);
+        return count($result);
+    }
+    public function get_post_id($post){
+        $query = "SELECT id FROM posts WHERE post = '$post'";
+        $result = $this->pdo->query($query);
+        $result = $result->fetch(pdo::FETCH_ASSOC);
+        return $result['id'];
+    }
+    public function add_like($id, $post_id){
+        $query = "INSERT INTO likes(user_id, post_id)
+        VALUES($id, $post_id)";
+        $this->pdo->query($query);
+    }
+    public function remove_like($id, $post_id){
+        $query = "DELETE FROM likes WHERE user_id = '$id' AND post_id = '$post_id'";
+        $this->pdo->query($query);
+    }
+    public function check_like($id, $post_id){
+        $query = "SELECT * FROM likes WHERE user_id = '$id' AND post_id = '$post_id'";
+        $result = $this->pdo->query($query);
+        return $result->fetch(pdo::FETCH_ASSOC);
+    }
+    public function likes_num($post_id){
+        $query = "SELECT * FROM likes WHERE post_id = '$post_id'";
+        $result = $this->pdo->query($query);
+        $result = $result->fetchAll(pdo::FETCH_ASSOC); 
+        return count($result);
+    }
+    public function is_my_post($id, $post_id){
+        $query = "SELECT * FROM posts WHERE user_id = '$id' AND id = '$post_id'";
+        $result = $this->pdo->query($query);
+        $result = $result->fetch(pdo::FETCH_ASSOC); 
+        return $result;
+    }
 }
 
 

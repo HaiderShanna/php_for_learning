@@ -45,6 +45,7 @@ if (isset($_SESSION['logged_in'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/posts.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -115,8 +116,8 @@ if (isset($_SESSION['logged_in'])) {
                 limit_count += 5;
                 $.post("../includes/show_more_friends.php", {
                     limit_count: limit_count
-                }, function(data, status){
-                    if(data.includes("<p hidden>")){
+                }, function(data, status) {
+                    if (data.includes("<p hidden>")) {
                         show_more.remove();
                     }
                     $(".friends-list-div").html(data);
@@ -127,10 +128,12 @@ if (isset($_SESSION['logged_in'])) {
         /* Show more Posts button */
         let show_more_posts = document.querySelector(".show-more-posts");
 
-        $(document).ready(function(){
+        $(document).ready(function() {
             let limit = 5;
-            $(document).on('click', '.show-more-posts', function(){
-                $(".all-posts").load("../includes/ajax_print_posts.php", {limit: limit +=5});
+            $(document).on('click', '.show-more-posts', function() {
+                $(".all-posts").load("../includes/ajax_print_posts.php", {
+                    limit: limit += 5
+                });
             })
         })
 
@@ -159,6 +162,69 @@ if (isset($_SESSION['logged_in'])) {
                         })
                 }
             });
+        })
+
+        /* Like Button */
+        $(document).on('click', '.bi-heart', function(e) {
+            let post = $(e.target).data('post');
+            let likes_num = $(e.target).parent().find(".likes-num");
+            $.post("../includes/like_button.php", {
+                post: post,
+                like: "like"
+            }, function(data) {
+                $(e.target).addClass("bi-heart-fill");
+                $(e.target).removeClass("bi-heart");
+                $(likes_num).html(data);
+            })
+        })
+        /* Unlike Button */
+        $(document).on('click', '.bi-heart-fill', function(e) {
+            let post = $(e.target).data('post');
+            let likes_num = $(e.target).parent().find(".likes-num");
+
+            $.post("../includes/like_button.php", {
+                post: post
+            }, function(data) {
+                $(e.target).addClass("bi-heart");
+                $(e.target).removeClass("bi-heart-fill");
+                $(likes_num).html(data);
+            })
+        })
+
+        /* Delete Button */
+        $(document).on('click', '.three-dots', function(e) {
+            let delete_button = $(e.target).parent().find(".delete-button");
+            $(delete_button).toggleClass("closed");
+        })
+
+        $(document).on('click', '.delete-button', function(e) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Delete!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let post = $(e.target).data("post");
+                    $.post("../includes/delete_post.php", {
+                        post: post
+                    }, function(data) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Post Deleted Successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        let this_post = $(e.target).parent().parent().parent();
+                        $(this_post).remove();
+                    })
+                }
+            });
+
         })
     </script>
 </body>

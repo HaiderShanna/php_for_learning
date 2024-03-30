@@ -4,21 +4,36 @@
     box-sizing: border-box;
     margin: 0;
 }
+/* User Info */
+
 .user-info{
     display: flex;
     padding: 3% 20px;
     align-items: center;
+    background-color: black;
+    border-radius: 25px;
+    margin: 20px;
+    justify-content: space-around;
 }
 .user-info .left-side{
     display: flex;
     flex-direction: column;
-    width: 15%;
+    row-gap: 35px;
+    align-items: start;
+}
+.user-info .left-side .img-username{
+    display: flex;
+    align-items: center;
+}
+.user-info .left-side .img-username .username{
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
 }
 .user-info .left-side img{
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    margin-bottom: 25px;
     object-fit: cover;
 }
 .user-info .left-side .file{
@@ -26,7 +41,7 @@
 }
 .user-info .left-side .file-label{
     padding: 15px 15px;
-    background-color: black;
+    background-color: rgb(33, 33, 33);
     color: white;
     font-size: 15px;
     border: none;
@@ -43,12 +58,19 @@
     margin-top: 20px;
     font-size: 12px;
 }
-.right-side .username{
+
+.user-info .user-numbers{
+    flex-basis: 60%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.user-info .user-numbers div{
     color: white;
-    font-size: 30px;
-    position: relative;
-    top: -20px;
-    left: -30px;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
 }
 
 /* -----------Posts Design--------------- */
@@ -58,74 +80,6 @@
     flex-direction: column;
     flex-basis: 30%;
     margin-top: 20px;
-}
-.single-post .post-head{
-    width: 100%;
-    background-color: rgb(14, 13, 13);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 10px;
-}
-.single-post .post-head .left-side{
-    display: flex;
-    column-gap: 15px;
-}
-.single-post .post-head .right-side{
-    position: relative;
-}
-.single-post .post-head .right-side .three-dots{
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
-}
-.single-post .post-head .right-side .delete-button{
-    color: red;
-    background-color: #18191A;
-    border: none;
-    border-radius: 15px;
-    padding: 15px 15px;
-    position: absolute;
-    top: -10px;
-    left: -100px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.single-post .post-head .right-side .delete-button:hover{
-    background-color: #28292b;
-}
-.single-post .post-head .right-side .closed{
-    display: none;
-}
-.single-post .post-head .post-profile-picture{
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-.single-post .post-head .post-username{
-    color: white;
-    font-size: 20px;
-}
-.single-post .post{
-    width: 100%;
-    max-height: 700px;
-    object-fit: cover;
-}
-.single-post .post-bottom-div{
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 10px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-
-}
-.single-post .post-bottom-div .post-caption{
-    flex-basis: 70%;
 }
 .flex-div{
     display: flex;
