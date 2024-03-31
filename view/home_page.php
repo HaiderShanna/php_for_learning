@@ -32,6 +32,7 @@ if (isset($_SESSION['logged_in'])) {
             echo "<p class='error'>Caption is too long !</p>";
         }
     }
+    $limit = 5;
 } else {
     header("location: ../index.php");
     die();
@@ -47,7 +48,8 @@ if (isset($_SESSION['logged_in'])) {
     <link rel="stylesheet" href="../styles/home.css">
     <link rel="stylesheet" href="../styles/posts.css">
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <title>home</title>
@@ -97,7 +99,7 @@ if (isset($_SESSION['logged_in'])) {
         </form>
     </div>
     <div class="all-posts">
-        <?php printPosts(5) ?>
+        <?php printPosts($limit) ?>
     </div>
 
     <script>
@@ -133,7 +135,31 @@ if (isset($_SESSION['logged_in'])) {
             $(document).on('click', '.show-more-posts', function() {
                 $(".all-posts").load("../includes/ajax_print_posts.php", {
                     limit: limit += 5
+                }, function() {
+                    /* Reattaching the eventListener of the Comments Button */
+                    let dialog = document.querySelectorAll(".dialog-modal");
+                    let forced_div = document.querySelectorAll(".forced-div");
+                    let comment_button = document.querySelectorAll(".bi-chat");
+                    let close_button = document.querySelectorAll(".close-button");
+
+                    /* show modal */
+                    comment_button.forEach((button, i) => {
+                        let post = button.getAttribute('data-post');
+                        button.addEventListener('click', () => {
+                            $(forced_div[i]).load("../includes/print_comments.php", {
+                                post
+                            });
+                            dialog[i].showModal();
+                        })
+                    });
+                    /* close modal */
+                    close_button.forEach((button, i) => {
+                        button.addEventListener('click', () => {
+                            dialog[i].close();
+                        })
+                    })
                 });
+                // location.reload();
             })
         })
 
@@ -225,6 +251,60 @@ if (isset($_SESSION['logged_in'])) {
                 }
             });
 
+        })
+        /* Comments Button */
+        let dialog = document.querySelectorAll(".dialog-modal");
+        let forced_div = document.querySelectorAll(".forced-div");
+        let comment_button = document.querySelectorAll(".bi-chat");
+        let close_button = document.querySelectorAll(".close-button");
+
+        /* show modal */
+        comment_button.forEach((button, i) => {
+            let post = button.getAttribute('data-post');
+            button.addEventListener('click', () => {
+                $(forced_div[i]).load("../includes/print_comments.php", {
+                    post
+                });
+                dialog[i].showModal();
+            })
+        });
+        /* close modal */
+        close_button.forEach((button, i) => {
+            button.addEventListener('click', () => {
+                dialog[i].close();
+            })
+        })
+        /* Add a New Comment */
+        $(document).on('click', '.post-comment-button', (e) => {
+            let text = $(e.target).prev().val();
+            let post = $(e.target).data("post");
+            let comments_num = $(e.target).parents().eq(3).prev();
+            $.post("../includes/check_comment.php", {
+                text,
+                post
+            }, (data) => {
+                $(".forced-div").load("../includes/print_comments.php", {
+                    post
+                })
+                $(comments_num).html(data);
+            })
+        })
+        /* Add a New Comment When you press Enter */
+        $(document).on('keyup', '.comment-input', (e) => {
+            if (e.which == 13) {
+                let text = $(e.target).val();
+                let post = $(e.target).next().data("post");
+                let comments_num = $(e.target).parents().eq(3).prev();
+                $.post("../includes/check_comment.php", {
+                    text,
+                    post
+                }, (data) => {
+                    $(".forced-div").load("../includes/print_comments.php", {
+                        post
+                    })
+                    $(comments_num).html(data);
+                })
+            }
         })
     </script>
 </body>

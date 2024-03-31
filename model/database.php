@@ -299,6 +299,29 @@ class database extends dbh{
         $result = $result->fetch(pdo::FETCH_ASSOC); 
         return $result;
     }
+    public function get_all_comments($post_id){
+        $query = "SELECT profile_picture, name, comment, date
+        FROM comments
+        JOIN users ON users.id = comments.user_id 
+        WHERE post_id = '$post_id'
+        ORDER BY date DESC";
+        $result = $this->pdo->query($query);
+        $result = $result->fetchAll(pdo::FETCH_ASSOC);
+        return $result;
+    }
+    public function add_comment($id, $post_id, $text){
+        $query = "INSERT INTO comments(user_id, post_id, comment)
+        VALUES($id, $post_id, :text)";
+        $stmt = $this->pdo->prepare($query); 
+        $stmt->bindParam(':text', $text);
+        $stmt->execute();
+    }
+    public function comments_num($post_id){
+        $query = "SELECT * FROM comments WHERE post_id = '$post_id'";
+        $result = $this->pdo->query($query);
+        $result = $result->fetchAll(pdo::FETCH_ASSOC); 
+        return count($result);
+    }
 }
 
 

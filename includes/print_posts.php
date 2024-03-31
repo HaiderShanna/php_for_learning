@@ -37,6 +37,7 @@ function post_template($friends_posts, $db, $id)
         $post_id = $db->get_post_id($post);
         $liked = $db->check_like($id, $post_id);
         $likes_num = $db->likes_num($post_id);
+        $comments_num = $db->comments_num($post_id);
         echo
         "<div class='single-post'>";
         if ($db->is_my_post($id, $post_id)) {
@@ -72,8 +73,14 @@ function post_template($friends_posts, $db, $id)
         "<p class='likes-num'>$likes_num Likes</p>
                         </div>
                         <div class='comments'>
-                            <i class='bi bi-chat'></i>
-                            <p>000 Comments</p>
+                            <i class='bi bi-chat' data-post='$post'></i>
+                            <p class='comments-num' data-post='$post'>$comments_num Comments</p>
+                            <dialog class='dialog-modal' >
+                                <button class='close-button'><i class='bi bi-x'></i></button>
+                                <div class='forced-div'>
+
+                                </div>
+                            </dialog>
                         </div>
                     </div>
                     <hr>

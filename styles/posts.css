@@ -1,127 +1,246 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
-*{
-    box-sizing: border-box;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
 /* -----------Posts Design--------------- */
 
-.single-post .post-head{
-    width: 100%;
-    background-color: rgb(14, 13, 13);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    display: flex;
-    column-gap: 15px;
-    align-items: center;
-    padding: 15px 10px;
+.single-post .post-head {
+  width: 100%;
+  background-color: rgb(14, 13, 13);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  padding: 15px 10px;
 }
-.single-post .post-head .post-profile-picture{
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    object-fit: cover;
+.single-post .post-head .post-profile-picture {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-.single-post .post-head .post-username{
-    color: white;
-    font-size: 20px;
+.single-post .post-head .post-username {
+  color: white;
+  font-size: 20px;
 }
 
 /* ----------------- */
 
-.single-post .my-post-head{
-    width: 100%;
-    background-color: rgb(14, 13, 13);
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 10px;
+.single-post .my-post-head {
+  width: 100%;
+  background-color: rgb(14, 13, 13);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
 }
-.single-post .my-post-head .left-side{
-    display: flex;
-    column-gap: 15px;
+.single-post .my-post-head .left-side {
+  display: flex;
+  column-gap: 15px;
 }
-.single-post .my-post-head .right-side{
-    position: relative;
+.single-post .my-post-head .right-side {
+  position: relative;
 }
-.single-post .my-post-head .right-side .three-dots{
-    color: white;
-    font-size: 25px;
-    cursor: pointer;
+.single-post .my-post-head .right-side .three-dots {
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
 }
-.single-post .my-post-head .right-side .delete-button{
-    color: red;
-    background-color: #18191A;
-    border: none;
-    border-radius: 15px;
-    padding: 15px 15px;
-    position: absolute;
-    top: -10px;
-    left: -100px;
-    cursor: pointer;
-    transition: 0.2s;
+.single-post .my-post-head .right-side .delete-button {
+  color: red;
+  background-color: #18191a;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 15px;
+  position: absolute;
+  top: -10px;
+  left: -100px;
+  cursor: pointer;
+  transition: 0.2s;
 }
-.single-post .my-post-head .right-side .delete-button:hover{
-    background-color: #28292b;
+.single-post .my-post-head .right-side .delete-button:hover {
+  background-color: #28292b;
 }
-.single-post .my-post-head .right-side .closed{
-    display: none;
+.single-post .my-post-head .right-side .closed {
+  display: none;
 }
-.single-post .my-post-head .post-profile-picture{
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    object-fit: cover;
+.single-post .my-post-head .post-profile-picture {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
 }
-.single-post .my-post-head .post-username{
-    color: white;
-    font-size: 20px;
+.single-post .my-post-head .post-username {
+  color: white;
+  font-size: 20px;
 }
 
 /* ---------------- */
-.single-post .post{
-    width: 100%;
-    max-height: 700px;
-    object-fit: cover;
+.single-post .post {
+  width: 100%;
+  max-height: 700px;
+  object-fit: cover;
 }
-.single-post .post-bottom-div{
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-    justify-content: space-between;
-    padding: 15px 10px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+.single-post .post-bottom-div {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: space-between;
+  padding: 15px 10px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.single-post .post-bottom-div .likes-comments {
+  display: flex;
+  column-gap: 20px;
+}
+.single-post .post-bottom-div .likes-comments .likes,
+.comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
+}
+.single-post .post-bottom-div .likes-comments i {
+  font-size: 25px;
+  cursor: pointer;
+}
+.single-post .post-bottom-div .likes-comments .bi-heart-fill {
+  color: red;
+}
+.single-post .post-bottom-div .likes-comments p {
+  font-size: 15px;
+}
+.single-post .post-bottom-div .caption-date {
+  display: flex;
+}
+.single-post .post-bottom-div .post-caption {
+  flex-basis: 70%;
+}
 
+/* Comments Dialog design */
+.dialog-modal {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  position: fixed;
+  width: 45%;
+  height: 75%;
+  border: none;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
 }
-.single-post .post-bottom-div .likes-comments{
-    display: flex;
-    column-gap: 20px;
+.dialog-modal .comments-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 10px;
+  height: 100%;
 }
-.single-post .post-bottom-div .likes-comments div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 5px;
+.dialog-modal .close-button {
+  position: absolute;
+  right: 15px;
+  color: white;
+  background-color: #1f2122;
+  border: 1px solid white;
+  border-radius: 5px;
 }
-.single-post .post-bottom-div .likes-comments i{
-    font-size: 25px;
-    cursor: pointer;
+.dialog-modal .close-button:hover {
+  opacity: 0.8;
+  background-color: #212323;
 }
-.single-post .post-bottom-div .likes-comments .bi-heart-fill{
-    color: red;
+.dialog-modal .all-comments {
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+  margin-top: 10%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
 }
-.single-post .post-bottom-div .likes-comments p{
-    font-size: 15px;
+.dialog-modal .single-comment {
+  display: flex;
+  flex-direction: column;
+  background-color: #1f2122;
+  row-gap: 10px;
+  padding: 10px;
+  border-radius: 15px;
 }
-.single-post .post-bottom-div .caption-date{
-    display: flex;
+.dialog-modal .single-comment .user-info {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
-.single-post .post-bottom-div .post-caption{
-    flex-basis: 70%;
+.dialog-modal .single-comment .user-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.dialog-modal .single-comment .comment-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.dialog-modal .single-comment .comment-content p {
+  background-color: #322e2e;
+  padding: 15px;
+  border-radius: 15px;
+}
+.dialog-modal .single-comment .comment-content small {
+  display: flex;
+  justify-content: end;
+  margin-right: 5px;
+}
+.dialog-modal .input-section {
+  display: flex;
+  column-gap: 10px;
+}
+.dialog-modal .input-section input {
+  flex-basis: 80%;
+  padding: 10px;
+  border-radius: 10px;
+}
+.dialog-modal .input-section input:focus {
+  outline: none;
+  border: 1px solid white;
+}
+.dialog-modal .input-section button {
+  border-radius: 10px;
+  padding: 5px 25px;
+  color: white;
+  font-weight: bold;
+  background-color: #1f2122;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.dialog-modal .input-section button:hover {
+  opacity: 0.8;
+  background-color: #212323;
+}
+/* Forced div */
+.forced-div{
+  height: 100%;
+}
+/* ---------- */
+
+.empty-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
 }
