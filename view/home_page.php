@@ -184,7 +184,30 @@ if (isset($_SESSION['logged_in'])) {
                             });
                             element.classList.add("followed");
                             element.innerHTML = "followed";
-                            $(".all-posts").load("../includes/ajax_print_posts.php");
+                            $(".all-posts").load("../includes/ajax_print_posts.php", () => {
+                                /* Reattaching the eventListener of the Comments Button */
+                                let dialog = document.querySelectorAll(".dialog-modal");
+                                let forced_div = document.querySelectorAll(".forced-div");
+                                let comment_button = document.querySelectorAll(".bi-chat");
+                                let close_button = document.querySelectorAll(".close-button");
+
+                                /* show modal */
+                                comment_button.forEach((button, i) => {
+                                    let post = button.getAttribute('data-post');
+                                    button.addEventListener('click', () => {
+                                        $(forced_div[i]).load("../includes/print_comments.php", {
+                                            post
+                                        });
+                                        dialog[i].showModal();
+                                    })
+                                });
+                                /* close modal */
+                                close_button.forEach((button, i) => {
+                                    button.addEventListener('click', () => {
+                                        dialog[i].close();
+                                    })
+                                })
+                            })
                         })
                 }
             });

@@ -2,7 +2,7 @@
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $email = $_POST['email'];
-    $username = $_POST['username'];
+    $username = htmlspecialchars($_POST['username']);
     $password = $_POST['password'];
 
     require_once ("dbh.php");
@@ -24,6 +24,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     elseif ($user->used_username()){
         header('location: ../view/signup_form.php?used_username=true');
+    }
+    elseif (strlen($username) >= 50) {
+        header('location: ../view/signup_form.php?invalid_username=true');
     }
     else{
         $user->create_user();

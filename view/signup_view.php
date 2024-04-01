@@ -14,5 +14,8 @@ class Errors{
         elseif (isset($_GET['used_username'])) {
             echo '<p class="errors"> Username is taken ! </p>';
         }
+        elseif (isset($_GET['invalid_username'])) {
+            echo '<p class="errors"> Invalid Username ! </p>';
+        }
     }
 }
